@@ -11,7 +11,6 @@ class ModelServiceServicer(model_pb2_grpc.ModelServiceServicer):
 
     def predict(self, request, context):
         input_data = request.input  
-        # Вызов модели, пример для sklearn/pickle
         prediction = model.predict([input_data])
         confidence = max(model.predict_proba([input_data])[0])  # вероятность
 
@@ -46,3 +45,4 @@ model_path = os.getenv('MODEL_PATH', '/default/path/to/model.pkl')
 # Загружаем модель
 with open(model_path, 'rb') as f:
     model = pickle.load(f)
+
