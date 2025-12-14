@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package model;
+
+service ModelService {
+  rpc health (HealthRequest) returns (HealthResponse);
+  rpc predict (PredictRequest) returns (PredictResponse);
+}
+
+message HealthRequest {}
+
+message HealthResponse {
+  string status = 1;
+  string version = 2;
+}
+
+message PredictRequest {
+  string input = 1;
+}
+
+message PredictResponse {
+  string prediction = 1;
+  float confidence = 2;
+}
